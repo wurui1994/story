@@ -34,7 +34,7 @@ story/
 
 ## 构建与预览
 
-构建使用独立工具 **quire**（https://github.com/wurui1994/quire，CLI + SDK 通用）。卷的发现按目录约定，与本仓库结构天然对齐，无需登记。
+构建使用独立工具 **quire**（https://github.com/wurui1994/quire，CLI + SDK 通用）。卷的发现按目录约定，与本仓库结构天然对齐，无需登记；例外是根下 `bibliography.md`，按 freedom 惯例以 `quire.toml` `[[volume]]` 登记为书末附录卷（导读册、正文之后）。
 
 ```sh
 pip install -e "git+https://github.com/wurui1994/quire.git#egg=quire"   # 一次性安装
@@ -47,7 +47,7 @@ quire list --words                        # 卷 / 章节 / 字数清单
 quire new vol0-谁在讲/chapters/新章 标题    # 新建章节（自动编号 ch12- 起）
 ```
 
-- **卷的发现**：`book/vol0-谁在讲/`（目录.md + chapters/）与 `book/chapters/`（正文，副标题「正文」）各成一卷；`vol0-` 前缀即阅读顺序，**导读册严格在前**。散置的 `正文目录.md` 是工作目录稿，按约定不进构建；书名、作者见 `quire.toml`。
+- **卷的发现**：`book/vol0-谁在讲/`（目录.md + chapters/）与 `book/chapters/`（正文，副标题「正文」）各成一卷；`vol0-` 前缀即阅读顺序，**导读册严格在前**。散置的 `正文目录.md` 是工作目录稿，按约定不进构建；根下 `bibliography.md` 经 `[[volume]]` 登记为书末「附录　参考文献库」。书名、作者见 `quire.toml`。
 - **字体**：默认用系统字体库；如需离线 / 可复现构建，在 `quire.toml` 配 `[fonts]` 目录并 `quire build --cache-font` 缓存字体（做法参照 freedom/scripts/assets/fonts）。
 - **封面**：默认排版式版式；如需 freedom 式「约束场」封面，可写封面插件并配 `[cover] plugin`（参照 freedom/scripts/cover.py）。
 

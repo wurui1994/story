@@ -1,6 +1,7 @@
 # quire 项目配置 —— 《叙事权》（暂名）
 # 构建工具：quire（https://github.com/wurui1994/quire；CLI：quire / SDK：import quire）
-# 卷的发现按目录约定（README「构建与预览」），无需在此登记。
+# 卷的发现按目录约定（README「构建与预览」）；根下散置文件按约定不构建，
+# 需要入书的用 [[volume]] 显式登记（如 bibliography，freedom 惯例：书末附录）。
 
 [book]
 title = "叙事权"          # 暂名，正式书名确定后替换
@@ -12,6 +13,14 @@ author = "clover"
 
 [layout]
 front_prefixes = ["导", "前言"]  # 章节排序时排在前面的文件名前缀
+
+[[volume]]
+id = "bibliography"        # 参考文献库：根下 bibliography.md，书末（导读册、正文之后）
+files = ["bibliography.md"]
+title = "参考文献库"
+subtitle = "附录"
+kind = "extra"
+label = "参考文献"
 
 # 说明：
 # - PDF 字体默认用系统库；如需离线/可复现构建，配置 [fonts] dir 后
