@@ -1,0 +1,20 @@
+# quire 项目配置 —— 《叙事权》（暂名）
+# 构建工具：quire（https://github.com/wurui1994/quire；CLI：quire / SDK：import quire）
+# 卷的发现按目录约定（README「构建与预览」），无需在此登记。
+
+[book]
+title = "叙事权"          # 暂名，正式书名确定后替换
+author = "clover"
+# date = "2026-10"        # 缺省取构建当日（YYYY-MM）
+# language = "zh-CN"
+# content = "book"        # 内容目录（默认 book/）
+# output = "dist"         # 产物目录（默认 dist/，已 git 忽略）
+
+[layout]
+front_prefixes = ["导", "前言"]  # 章节排序时排在前面的文件名前缀
+
+# 说明：
+# - PDF 字体默认用系统库；如需离线/可复现构建，配置 [fonts] dir 后
+#   运行 `quire build --cache-font` 缓存字体（做法参照 freedom/scripts/assets/fonts）。
+# - 封面默认为排版式版式；如需 freedom 式「约束场」封面，写一个封面插件
+#   并配置 [cover] plugin（参照 freedom/scripts/cover.py）。

@@ -212,6 +212,7 @@ story/
 ├── target.md          创作目标（原始意图与文眼）
 ├── plan.md            本文件
 ├── README.md          项目说明
+├── quire.toml         构建配置（书名 / 作者；构建工具 quire，用法见 README「构建与预览」）
 ├── bibliography.md    参考文献库（【R】= reference 提及，★ = 精读候选）
 ├── reference/         原始对话素材（三份分析，写作起点）
 ├── series/            共享资产（文体约定引 freedom/series/style.md v2.0）

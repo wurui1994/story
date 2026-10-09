@@ -20,15 +20,36 @@
 story/
 ├── target.md          创作目标（原始意图、文眼、素材收敛结论）
 ├── plan.md            总计划 v0.3（定位、架构、还账点、reference 覆盖对照、多学科地图、流程、风险）
+├── quire.toml         构建配置（书名 / 作者；构建工具见下「构建与预览」）
 ├── bibliography.md    参考文献库（【R】= reference 提及，★ = 精读候选，【F】= 沿用母书库）
 ├── reference/         原始对话素材：deepseek / qwen / yuanbao 三份分析，写作起点
 ├── series/            共享资产（文体约定引 freedom/series/style.md v2.0）
 ├── notes/             工作笔记（话术标本已随章内嵌，总目见 book/正文目录.md；思想家精读按需补）
-└── book/
-    ├── vol0-谁在讲/             导读册（✅ 重构三稿，11 章，说书先生路线）：目录.md + chapters/
-    ├── 正文目录.md              正文初稿目录（28 章清单与字数、各部提要、标本册总目 24 条）
-    └── chapters/               正文（✅ 初稿 28 章 51,034 字，2026-10-09）
+├── book/
+│   ├── vol0-谁在讲/           导读册（✅ 重构三稿，11 章，说书先生路线）：目录.md + chapters/
+│   ├── 正文目录.md            正文初稿目录（工作稿，按约定不进构建）：28 章清单与字数、各部提要、标本册总目
+│   └── chapters/             正文（✅ 初稿 28 章 51,034 字，2026-10-09）
+└── dist/              构建产物（quire 生成，git 忽略）
 ```
+
+## 构建与预览
+
+构建使用独立工具 **quire**（https://github.com/wurui1994/quire，CLI + SDK 通用）。卷的发现按目录约定，与本仓库结构天然对齐，无需登记。
+
+```sh
+pip install -e "git+https://github.com/wurui1994/quire.git#egg=quire"   # 一次性安装
+
+quire build                               # 全部卷 → dist/（HTML + EPUB + PDF + index.html）
+quire build vol0-谁在讲                   # 只构建导读册；--html / --epub / --pdf 可三选一
+quire build --all-one                     # 全卷合本 all.html / all.epub / all.pdf
+quire serve                               # 预览 http://localhost:8000（改动即生效）
+quire list --words                        # 卷 / 章节 / 字数清单
+quire new vol0-谁在讲/chapters/新章 标题    # 新建章节（自动编号 ch12- 起）
+```
+
+- **卷的发现**：`book/vol0-谁在讲/`（目录.md + chapters/）与 `book/chapters/`（正文，副标题「正文」）各成一卷；`vol0-` 前缀即阅读顺序，**导读册严格在前**。散置的 `正文目录.md` 是工作目录稿，按约定不进构建；书名、作者见 `quire.toml`。
+- **字体**：默认用系统字体库；如需离线 / 可复现构建，在 `quire.toml` 配 `[fonts]` 目录并 `quire build --cache-font` 缓存字体（做法参照 freedom/scripts/assets/fonts）。
+- **封面**：默认排版式版式；如需 freedom 式「约束场」封面，可写封面插件并配 `[cover] plugin`（参照 freedom/scripts/cover.py）。
 
 ## 文眼
 
